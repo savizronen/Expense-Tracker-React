@@ -23,15 +23,27 @@ function ExpenseForm (){
     setEnterDate(event.target.value);
     console.log(event.target.value);
   }
-
+  function submitHendler(event){
+    event.preventDefault();
+    const expenseData={
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate)
+    };
+    console.log(expenseData);
+    setEnterTitle("");
+    setEnterAmount("");
+    setEnterDate("");
+  }
 
   return (
-    <form >
+    <form onSubmit={submitHendler}>
       <div className='new-expense__controls'>
         <div className='new-expense__control'>
           <label>Title</label>
           <input
             type='text'
+            value={enteredTitle}
             onChange={titleChangeHendler}
           />
         </div>
@@ -41,6 +53,7 @@ function ExpenseForm (){
             type='number'
             min='0.5'
             step='0.5'
+            value={enteredAmount}
             onChange={amountChangeHendler}
           />
         </div>
@@ -50,6 +63,7 @@ function ExpenseForm (){
             type='date'
             min='2019-01-01'
             max='2022-12-31'
+            value={enteredDate}
             onChange={dateChangeHendler}
           />
         </div>
