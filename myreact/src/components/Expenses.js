@@ -3,10 +3,16 @@ import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 
-function Expense(props) {
+function Expenses(props) {
+  function filterChangeYearHandler(selectedYear) {
+    console.log("expenses.js");
+    console.log(selectedYear);
+  }
+
   return (
     <div>
       <Card className="expenses">
+        <ExpensesFilter onChangeYear={filterChangeYearHandler} />
         <ExpenseItem
           title={props.lst[0].title}
           amount={props.lst[0].amount}
@@ -32,4 +38,4 @@ function Expense(props) {
   );
 }
 
-export default Expense;
+export default Expenses;
