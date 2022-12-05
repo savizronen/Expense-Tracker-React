@@ -10,16 +10,21 @@ function Expenses(props) {
 
   function filterChangeHandler(selectedYear) {
     setFilteredYear(selectedYear);
+    console.log("In Expenses.js");
+    console.log(selectedYear);
   }
 
+  const filterExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
   return (
     <div>
       <Card className="expenses">
         <ExpensesFilter
           selected={filteredYear}
-          onChangeFilter={filterChangeHandler}
+          onChangeYear={filterChangeHandler}
         />
-        {props.items.map((expenses) => (
+        {filterExpenses.map((expenses) => (
           <ExpenseItem
             key={expenses.id}
             title={expenses.title}
