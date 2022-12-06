@@ -31,9 +31,6 @@ function ExpenseForm(props) {
     setEnterAmount("");
     setEnterDate("");
   }
-  // const onCansel = () => {
-  //   props.stopEditingHandler();
-  // };
 
   return (
     <form onSubmit={submitHendler}>
